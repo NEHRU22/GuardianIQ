@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Personal Assistant</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <main class="page-container">
+        <header class="site-header">
+            <div class="brand-icon">AI</div>
+            <div>
+                <h1>Your AI Guardian</h1>
+                <p>Your personal space to learn and explore.</p>
+            </div>
+        </header>
+
+        <section class="auth-card">
+            <div class="welcome-section">
+                <p class="eyebrow">YOUR LEARNING COMPANION</p>
+                <h2>Welcome!</h2>
+                <p>Sign in to continue or create an account to get started.</p>
+            </div>
+
+            <div class="tab-buttons">
+                <button type="button" id="loginTab"
+                        class="tab-button active">
+                    Log In
+                </button>
+                <button type="button" id="registerTab"
+                        class="tab-button">
+                    Create Account
+                </button>
+            </div>
+
+            <div id="message" class="message" role="status"
+                 aria-live="polite"></div>
+
+            <form id="loginForm">
+                <h3>Welcome back</h3>
+
+                <label for="loginEmail">Email address</label>
+                <input type="email" id="loginEmail"
+                       name="email" autocomplete="email"
+                       placeholder="you@example.com" required>
+
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword"
+                       name="password" autocomplete="current-password"
+                       placeholder="Enter your password" required>
+
+                <button type="submit" class="primary-button">
+                    Log In
+                </button>
+            </form>
+
+            <form id="registerForm" hidden>
+                <h3>Create your account</h3>
+
+                <label for="fullName">Full name</label>
+                <input type="text" id="fullName" name="fullName"
+                       minlength="2" maxlength="100"
+                       autocomplete="name" required>
+
+                <label for="registerEmail">Your email address</label>
+                <input type="email" id="registerEmail" name="email"
+                       maxlength="254" autocomplete="email" required>
+
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword"
+                       name="password" minlength="8" maxlength="72"
+                       autocomplete="new-password" required>
+                <p class="field-hint">
+                    Use at least 8 characters.
+                </p>
+
+                <label for="dateOfBirth">Date of birth</label>
+                <input type="date" id="dateOfBirth"
+                       name="dateOfBirth" required>
+
+                <label for="parentEmail">Parent or Guardian email</label>
+                <input type="email" id="parentEmail" name="parentEmail"
+                       maxlength="254" autocomplete="email" required>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="parentReportsConsent"
+                           name="parentReportsConsent">
+                    I agree to daily reports being sent to my parent or guardian.
+                </label>
+
+                <label class="checkbox-label">
+                    <input type="checkbox" id="guardianConsentGiven"
+                           name="guardianConsentGiven">
+                    I confirm that guardian consent has been obtained,
+                    where required.
+                </label>
+
+                <p class="field-hint">
+                    Parent email verification and consent checks
+                    must be completed before reports are enabled.
+                </p>
+
+                <button type="submit" class="primary-button">
+                    Create Account
+                </button>
+            </form>
+
+            <p class="privacy-note">
+                Keep your password private. Your account must meet
+                the application's age eligibility requirements.
+            </p>
+        </section>
+
+        <footer>
+            GuardianIQ · Learning made simpler.
+        </footer>
+    </main>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

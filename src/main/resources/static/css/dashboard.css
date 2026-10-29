@@ -1,0 +1,1714 @@
+
+/* =========================================================
+   AI PERSONAL ASSISTANT - DASHBOARD STYLES
+   File: static/css/dashboard.css
+   ========================================================= */
+
+/* ---------- 1. Global reset and theme ---------- */
+
+:root {
+    --primary: #8178f5;
+    --primary-hover: #6c63df;
+    --primary-light: #29263f;
+
+    --background: #111318;
+    --surface: #191c23;
+    --surface-secondary: #22252e;
+
+    --text-primary: #e8eaf0;
+    --text-secondary: #a3a8b8;
+    --text-muted: #858b9b;
+
+    --border: #30343e;
+    --border-strong: #3b404c;
+
+    --success: #4ade9a;
+    --danger: #ff8585;
+
+    --sidebar-width: 270px;
+    --header-height: 82px;
+
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.18);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+    color: var(--text-primary);
+    background: var(--background);
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(79, 70, 229, 0.25);
+    outline-offset: 3px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+::selection {
+    color: #ffffff;
+    background: var(--primary);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* ---------- 2. Main layout ---------- */
+
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+
+/* ---------- 3. Sidebar ---------- */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+
+    display: flex;
+    flex-direction: column;
+
+    width: var(--sidebar-width);
+    height: 100vh;
+    height: 100dvh;
+
+    padding: 0 18px;
+
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+
+    min-height: 76px;
+    padding: 0 6px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+
+    color: var(--text-primary);
+    font-size: 19px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.brand-icon {
+    display: grid;
+    place-items: center;
+
+    width: 38px;
+    height: 38px;
+
+    color: #ffffff;
+    font-size: 23px;
+
+    background: linear-gradient(135deg, #6366f1, #4338ca);
+    border-radius: 12px;
+
+    box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+.brand-text {
+    white-space: nowrap;
+}
+
+.sidebar-actions {
+    padding: 22px 0 25px;
+}
+
+.new-conversation-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 46px;
+
+    padding: 12px 14px;
+
+    color: #ffffff;
+    font-weight: 650;
+    font-size: 13px;
+
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: var(--radius-md);
+
+    box-shadow: 0 3px 8px rgba(79, 70, 229, 0.12);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.new-conversation-button:hover {
+    background: var(--primary-hover);
+    box-shadow: 0 5px 14px rgba(79, 70, 229, 0.2);
+    transform: translateY(-1px);
+}
+
+.new-conversation-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    font-size: 21px;
+    line-height: 1;
+}
+
+.sidebar-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sidebar-section-title {
+    padding: 0 10px 10px;
+
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.2px;
+}
+
+.sidebar-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    width: 100%;
+    min-height: 44px;
+
+    padding: 11px 12px;
+
+    color: #a3a8b8;
+    font-size: 13px;
+    font-weight: 550;
+    text-align: left;
+
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.sidebar-nav-item:hover {
+    color: var(--primary);
+    background: #20232b;
+}
+
+.sidebar-nav-item.active {
+    color: var(--primary);
+    font-weight: 700;
+
+    background: var(--primary-light);
+    border-color: #403a68;
+}
+
+.nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 23px;
+    flex-shrink: 0;
+
+    font-size: 17px;
+}
+
+.coming-soon-label {
+    margin-left: auto;
+    padding: 4px 7px;
+
+    color: #a3a8b8;
+    font-size: 9px;
+    font-weight: 650;
+
+    background: #22252e;
+    border-radius: 5px;
+}
+
+
+/* ---------- 4. Sidebar bottom and profile ---------- */
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding-bottom: 14px;
+}
+
+.sidebar-help {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+
+    padding: 14px 11px;
+    margin-bottom: 18px;
+
+    background: #20232b;
+    border: 1px solid #30343e;
+    border-radius: var(--radius-md);
+}
+
+.help-icon {
+    display: grid;
+    place-items: center;
+
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+
+    color: var(--primary);
+    font-size: 15px;
+    font-weight: 750;
+
+    background: var(--primary-light);
+    border-radius: 8px;
+}
+
+.help-title {
+    margin-bottom: 5px;
+
+    color: var(--text-primary);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.help-description {
+    color: var(--text-secondary);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.sidebar-divider {
+    height: 1px;
+    margin-bottom: 15px;
+    background: var(--border);
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+    padding: 8px 4px;
+}
+
+.profile-avatar {
+    display: grid;
+    place-items: center;
+
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 750;
+
+    background: linear-gradient(135deg, #818cf8, #4f46e5);
+    border: 2px solid #403a68;
+    border-radius: 50%;
+}
+
+.profile-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-name {
+    overflow: hidden;
+
+    margin-bottom: 4px;
+
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.profile-email {
+    overflow: hidden;
+
+    color: var(--text-secondary);
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.logout-button {
+    display: grid;
+    place-items: center;
+
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+
+    color: #a3a8b8;
+    font-size: 21px;
+
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    transition:
+        color 0.2s ease,
+        background 0.2s ease;
+}
+
+.logout-button:hover {
+    color: var(--danger);
+    background: #321f23;
+}
+
+
+/* ---------- 5. Main content ---------- */
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+
+    width: calc(100% - var(--sidebar-width));
+    min-width: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    margin-left: var(--sidebar-width);
+
+    background: var(--background);
+}
+
+
+/* ---------- 6. Top header ---------- */
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    min-height: var(--header-height);
+    padding: 17px 36px;
+
+    background: rgba(25, 28, 35, 0.96);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-title-area h1 {
+    margin-bottom: 5px;
+
+    color: var(--text-primary);
+    font-size: 21px;
+    font-weight: 750;
+    letter-spacing: -0.5px;
+}
+
+.header-subtitle {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.header-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 9px 12px;
+
+    color: #c2c6d2;
+    font-size: 11px;
+    font-weight: 600;
+
+    background: #191c23;
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #dcfce7;
+}
+
+
+/* ---------- 7. Chat workspace ---------- */
+
+.chat-workspace {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 1050px;
+    min-height: 300px;
+
+    margin: 0 auto;
+    padding: 30px 36px 16px;
+}
+
+
+/* ---------- 8. Welcome screen ---------- */
+
+.welcome-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    margin: auto 0;
+    padding: 20px 0 32px;
+
+    text-align: center;
+}
+
+.welcome-icon {
+    display: grid;
+    place-items: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 24px;
+
+    color: #ffffff;
+    font-size: 32px;
+
+    background: linear-gradient(135deg, #818cf8, #4f46e5);
+    border-radius: 19px;
+
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+}
+
+.welcome-screen h2 {
+    margin-bottom: 12px;
+
+    color: var(--text-primary);
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 750;
+    line-height: 1.3;
+    letter-spacing: -0.9px;
+}
+
+.welcome-description {
+    max-width: 510px;
+
+    margin-bottom: 32px;
+
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* ---------- 9. Suggested prompts ---------- */
+
+.suggestions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+
+    width: 100%;
+    max-width: 740px;
+
+    text-align: left;
+}
+
+.suggestion-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+
+    min-width: 0;
+    min-height: 108px;
+
+    padding: 17px 16px;
+
+    color: var(--text-primary);
+    text-align: left;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+
+    box-shadow: var(--shadow-sm);
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.suggestion-card:hover {
+    background: #22252e;
+    border-color: #c7d2fe;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.suggestion-card:active {
+    transform: translateY(0);
+}
+
+.suggestion-icon {
+    display: grid;
+    place-items: center;
+
+    width: 39px;
+    height: 39px;
+    flex-shrink: 0;
+
+    font-size: 18px;
+
+    background: #22252e;
+    border-radius: 11px;
+}
+
+.suggestion-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 7px;
+
+    min-width: 0;
+    padding-top: 2px;
+}
+
+.suggestion-content strong {
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 750;
+    line-height: 1.5;
+}
+
+.suggestion-content > span {
+    color: var(--text-secondary);
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.suggestion-arrow {
+    margin-top: 1px;
+
+    color: #858b9b;
+    font-size: 17px;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.suggestion-card:hover .suggestion-arrow {
+    color: var(--primary);
+    transform: translateX(3px);
+}
+
+
+/* ---------- 10. Chat messages area ---------- */
+
+.messages-area {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 8px;
+
+    width: 100%;
+    min-height: 0;
+
+    padding: 10px 0 20px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    overflow-wrap: anywhere;
+}
+
+.transcript-message {
+    display: flex;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.transcript-message--user {
+    justify-content: flex-end;
+}
+
+.transcript-message--assistant {
+    justify-content: flex-start;
+}
+
+.transcript-message__bubble {
+    max-width: min(80%, 700px);
+
+    padding: 12px 16px;
+
+    font-size: 14px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+}
+
+.transcript-message--user .transcript-message__bubble {
+    color: #ffffff;
+    background: var(--primary);
+    border-bottom-right-radius: 4px;
+}
+
+.transcript-message--assistant .transcript-message__bubble {
+    color: #e3e6ef;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+}
+
+
+/* ---------- 11. Message composer ---------- */
+
+.chat-composer-area {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+
+    width: 100%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+    padding: 16px 36px 18px;
+
+    background: rgba(17, 19, 24, 0.97);
+}
+
+.chat-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+
+    width: 100%;
+    padding: 10px;
+
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    border-radius: 17px;
+
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.045);
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.chat-form:focus-within {
+    border-color: #a5b4fc;
+    box-shadow: 
+        0 0 0 3px rgba(79, 70, 229, 0.08),
+        0 5px 18px rgba(15, 23, 42, 0.04);
+}
+
+#messageInput {
+    display: block;
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 43px;
+    max-height: 180px;
+
+    padding: 12px 10px;
+
+    color: var(--text-primary);
+    font-size: 14px;
+    line-height: 1.5;
+
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: vertical;
+}
+
+#messageInput::placeholder {
+    color: #858b9b;
+}
+
+#messageInput:focus-visible {
+    outline: none;
+}
+
+#messageInput:disabled {
+    cursor: wait;
+    opacity: 0.7;
+}
+
+.send-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    min-width: 88px;
+    min-height: 43px;
+
+    padding: 0 15px;
+
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 11px;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.send-button:hover:not(:disabled) {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+.send-button:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.send-button span:last-child {
+    font-size: 14px;
+}
+
+.composer-disclaimer {
+    margin-top: 11px;
+
+    color: var(--text-muted);
+    font-size: 10px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+
+/* ---------- 12. Scrollbars ---------- */
+
+.messages-area {
+    scrollbar-width: thin;
+    scrollbar-color: #454a57 transparent;
+}
+
+.messages-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.messages-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 20px;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+
+/* ---------- 13. Responsive: tablets ---------- */
+
+@media (max-width: 1000px) {
+    :root {
+        --sidebar-width: 235px;
+    }
+
+    .sidebar {
+        padding: 0 14px;
+    }
+
+    .chat-workspace {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .chat-composer-area {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .dashboard-header {
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+
+    .suggestions-grid {
+        gap: 10px;
+    }
+
+    .suggestion-card {
+        padding: 14px 12px;
+    }
+}
+
+
+/* ---------- 14. Responsive: small tablets ---------- */
+
+@media (max-width: 760px) {
+    :root {
+        --sidebar-width: 76px;
+        --header-height: 72px;
+    }
+
+    .sidebar {
+        align-items: center;
+        padding: 0 10px;
+    }
+
+    .sidebar-header {
+        justify-content: center;
+        width: 100%;
+        min-height: 72px;
+        padding: 0;
+    }
+
+    .brand {
+        justify-content: center;
+    }
+
+    .brand-icon {
+        width: 41px;
+        height: 41px;
+    }
+
+    .brand-text,
+    .new-conversation-button > span:not(.button-icon),
+    .sidebar-section-title,
+    .sidebar-nav-item > span:not(.nav-icon),
+    .sidebar-help,
+    .profile-details,
+    .logout-button {
+        display: none;
+    }
+
+    .sidebar-actions {
+        width: 100%;
+        padding: 18px 0;
+    }
+
+    .new-conversation-button {
+        min-height: 44px;
+        padding: 8px;
+    }
+
+    .button-icon {
+        font-size: 23px;
+    }
+
+    .sidebar-navigation {
+        align-items: center;
+        width: 100%;
+    }
+
+    .sidebar-nav-item {
+        justify-content: center;
+        min-height: 44px;
+        padding: 8px;
+    }
+
+    .nav-icon {
+        width: auto;
+        font-size: 19px;
+    }
+
+    .sidebar-bottom {
+        width: 100%;
+        padding-bottom: 18px;
+    }
+
+    .sidebar-divider {
+        margin-bottom: 10px;
+    }
+
+    .profile-card {
+        justify-content: center;
+        padding: 7px 0;
+    }
+
+    .profile-avatar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .dashboard-header {
+        padding: 14px 20px;
+    }
+
+    .header-title-area h1 {
+        font-size: 19px;
+    }
+
+    .chat-workspace {
+        padding: 24px 20px 12px;
+    }
+
+    .chat-composer-area {
+        padding: 12px 20px 15px;
+    }
+}
+
+
+/* ---------- 15. Responsive: mobile ---------- */
+
+@media (max-width: 520px) {
+    :root {
+        --sidebar-width: 60px;
+        --header-height: 66px;
+    }
+
+    .sidebar {
+        padding: 0 6px;
+    }
+
+    .sidebar-header {
+        min-height: 66px;
+    }
+
+    .brand-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        border-radius: 10px;
+    }
+
+    .sidebar-actions {
+        padding: 15px 0;
+    }
+
+    .new-conversation-button {
+        min-height: 39px;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .button-icon {
+        font-size: 21px;
+    }
+
+    .sidebar-nav-item {
+        min-height: 40px;
+        padding: 7px;
+    }
+
+    .nav-icon {
+        font-size: 17px;
+    }
+
+    .profile-avatar {
+        width: 34px;
+        height: 34px;
+        font-size: 11px;
+    }
+
+    .dashboard-header {
+        min-height: var(--header-height);
+        gap: 8px;
+        padding: 12px 13px;
+    }
+
+    .header-title-area h1 {
+        margin-bottom: 3px;
+        font-size: 17px;
+    }
+
+    .header-subtitle {
+        max-width: 195px;
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .header-status {
+        gap: 6px;
+        padding: 7px 8px;
+        font-size: 9px;
+    }
+
+    .status-dot {
+        width: 6px;
+        height: 6px;
+    }
+
+    .chat-workspace {
+        padding: 18px 12px 8px;
+    }
+
+    .welcome-screen {
+        padding: 24px 0;
+    }
+
+    .welcome-icon {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 18px;
+        font-size: 27px;
+        border-radius: 15px;
+    }
+
+    .welcome-screen h2 {
+        font-size: 22px;
+        letter-spacing: -0.5px;
+    }
+
+    .welcome-description {
+        margin-bottom: 23px;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .suggestions-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+    }
+
+    .suggestion-card {
+        align-items: center;
+        min-height: 78px;
+        padding: 12px;
+        gap: 11px;
+    }
+
+    .suggestion-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
+        border-radius: 9px;
+    }
+
+    .suggestion-content {
+        gap: 3px;
+    }
+
+    .suggestion-content strong {
+        font-size: 12px;
+    }
+
+    .suggestion-content > span {
+        font-size: 10px;
+    }
+
+    .suggestion-arrow {
+        font-size: 15px;
+    }
+
+    .chat-composer-area {
+        padding: 10px 10px 12px;
+    }
+
+    .chat-form {
+        gap: 5px;
+        padding: 7px;
+        border-radius: 13px;
+    }
+
+    #messageInput {
+        min-height: 40px;
+        padding: 10px 7px;
+        font-size: 13px;
+    }
+
+    .send-button {
+        gap: 6px;
+        min-width: 66px;
+        min-height: 40px;
+        padding: 0 9px;
+        font-size: 11px;
+        border-radius: 9px;
+    }
+
+    .composer-disclaimer {
+        margin-top: 8px;
+        font-size: 9px;
+    }
+
+    .transcript-message__bubble {
+        max-width: 92%;
+        padding: 10px 12px;
+        font-size: 13px;
+        line-height: 1.65;
+    }
+}
+
+
+/* ---------- 16. Reduced motion preference ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ==========================================
+   SAVED CONVERSATION HISTORY
+   ========================================== */
+
+.conversation-history-section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 100px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.conversation-history-heading {
+    flex-shrink: 0;
+    padding: 8px 10px 10px;
+    color: #858b9b;
+    font-size: 10px;
+    font-weight: 750;
+    letter-spacing: 1.1px;
+}
+
+.conversation-history {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 0;
+    padding-bottom: 10px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #454a57 transparent;
+}
+
+.conversation-history-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    min-width: 0;
+    padding: 10px;
+    color: #a3a8b8;
+    text-align: left;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.conversation-history-item:hover {
+    color: #b8b2ff;
+    background: #20232b;
+}
+
+.conversation-history-item.is-active {
+    color: #b8b2ff;
+    background: #29263f;
+    border-color: #403a68;
+}
+
+.conversation-history-icon {
+    flex-shrink: 0;
+    font-size: 15px;
+}
+
+.conversation-history-title {
+    display: block;
+    min-width: 0;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.conversation-history-empty {
+    padding: 8px 10px;
+    color: #858b9b;
+    font-size: 11px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+/* Compact sidebar mode */
+@media (max-width: 760px) {
+    .conversation-history-section {
+        display: none;
+    }
+}
+
+/* ================= PDF QUESTIONS MODAL ================= */
+
+.pdf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(5, 6, 10, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.pdf-modal[hidden] {
+    display: none !important;
+}
+
+.pdf-modal:not([hidden]) {
+    display: flex;
+    animation: pdfFadeIn 0.2s ease-out;
+}
+
+.pdf-modal-content {
+    width: 100%;
+    max-width: 540px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    background: #191c23;
+    color: #e8eaf0;
+    border: 1px solid #38344e;
+    border-radius: 22px;
+    box-shadow: 0 24px 80px rgba(20, 24, 70, 0.25);
+    animation: pdfSlideIn 0.25s ease-out;
+}
+
+.pdf-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+}
+
+.pdf-modal-header h2 {
+    margin: 0;
+    color: #d7d2ff;
+    font-size: 1.45rem;
+    line-height: 1.4;
+    font-weight: 750;
+}
+
+#closePdfModal {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    color: #b5b0d0;
+    background: #29263f;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+#closePdfModal:hover {
+    color: #ffffff;
+    background: #6558e8;
+    transform: rotate(5deg);
+}
+
+.pdf-modal-content > p {
+    margin: 0 0 22px;
+    color: #a3a8b8;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+#pdfUploadForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+#pdfUploadForm label {
+    color: #e0def0;
+    font-size: 0.92rem;
+    font-weight: 650;
+}
+
+#pdfFile {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 14px;
+    color: #c0bfd0;
+    background: #151720;
+    border: 1.5px dashed #514a80;
+    border-radius: 14px;
+    font: inherit;
+    cursor: pointer;
+}
+
+#pdfFile:hover {
+    background: #24213a;
+    border-color: #8274ed;
+}
+
+#pdfFile::file-selector-button {
+    margin-right: 12px;
+    padding: 9px 13px;
+    color: #b8b2ff;
+    background: #302b50;
+    border: none;
+    border-radius: 9px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+#uploadPdfButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 6px;
+    padding: 13px 18px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #7767f4, #5545cf);
+    border: none;
+    border-radius: 13px;
+    box-shadow: 0 7px 18px rgba(101, 88, 232, 0.22);
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+#uploadPdfButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(101, 88, 232, 0.3);
+}
+
+#uploadPdfButton:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#pdfUploadStatus {
+    margin: 14px 0;
+    padding: 0;
+    color: #b8b2ff;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+#pdfUploadStatus:empty {
+    display: none;
+}
+
+.pdf-modal-content hr {
+    height: 1px;
+    margin: 24px 0;
+    background: #30303c;
+    border: 0;
+}
+
+#pdfQuestionInstructions {
+    margin: 0;
+    padding: 14px 16px;
+    color: #c0badf;
+    background: #24213a;
+    border: 1px solid #403a68;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+.pdf-modal button:focus-visible,
+#pdfFile:focus-visible {
+    outline: 3px solid #a79cff;
+    outline-offset: 3px;
+}
+
+@keyframes pdfFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes pdfSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 520px) {
+    .pdf-modal {
+        padding: 14px;
+    }
+
+    .pdf-modal-content {
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+
+    .pdf-modal-header h2 {
+        font-size: 1.2rem;
+    }
+
+    #pdfFile {
+        padding: 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pdf-modal,
+    .pdf-modal-content {
+        animation: none;
+    }
+
+    #closePdfModal,
+    #uploadPdfButton {
+        transition: none;
+    }
+}
+
+
+
+/* ---------- Dark theme refinements ---------- */
+
+.sidebar-nav-item,
+.conversation-history-item {
+    color: var(--text-secondary);
+}
+
+.sidebar-nav-item:hover,
+.conversation-history-item:hover {
+    color: var(--primary);
+    background: #22252e;
+}
+
+.sidebar-nav-item.active,
+.conversation-history-item.is-active {
+    color: #c5c0ff;
+    background: #29263f;
+    border-color: #403a68;
+}
+
+.coming-soon-label {
+    color: #a3a8b8;
+    background: #22252e;
+}
+
+.sidebar-help {
+    background: #151720;
+    border-color: var(--border);
+}
+
+.help-icon,
+.suggestion-icon {
+    background: #29263f;
+}
+
+.logout-button {
+    color: var(--text-secondary);
+}
+
+.logout-button:hover {
+    color: var(--danger);
+    background: #321f23;
+}
+
+.header-status {
+    color: #c2c6d2;
+    background: #191c23;
+}
+
+.status-dot {
+    box-shadow: 0 0 0 3px #183a2a;
+}
+
+.suggestion-card:hover {
+    background: #20232b;
+    border-color: #5a5492;
+}
+
+.suggestion-arrow {
+    color: #858b9b;
+}
+
+.transcript-message--assistant .transcript-message__bubble {
+    color: var(--text-primary);
+}
+
+#messageInput::placeholder {
+    color: #858b9b;
+}
+
+.messages-area {
+    scrollbar-color: #454a57 transparent;
+}
+
+.messages-area::-webkit-scrollbar-thumb {
+    background: #454a57;
+}
+
+.messages-area::-webkit-scrollbar-thumb:hover {
+    background: #666d7c;
+}
+
+.conversation-history {
+    scrollbar-color: #454a57 transparent;
+}
+
+/* PDF upload modal */
+.pdf-modal-content {
+    background: #191c23;
+    color: #e8eaf0;
+    border-color: #38344e;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+.pdf-modal-header h2 {
+    color: #d7d2ff;
+}
+
+#closePdfModal {
+    color: #b5b0d0;
+    background: #29263f;
+}
+
+#closePdfModal:hover {
+    color: #ffffff;
+    background: #6258d9;
+}
+
+.pdf-modal-content > p {
+    color: #a3a8b8;
+}
+
+#pdfUploadForm label {
+    color: #e0def0;
+}
+
+#pdfFile {
+    color: #c0bfd0;
+    background: #151720;
+    border-color: #514a80;
+}
+
+#pdfFile:hover {
+    background: #20232b;
+    border-color: #8178f5;
+}
+
+#pdfFile::file-selector-button {
+    color: #c5c0ff;
+    background: #302b50;
+}
+
+#pdfUploadButton {
+    background: linear-gradient(135deg, #8178f5, #6258d9);
+}
+
+#pdfUploadStatus {
+    color: #c5c0ff;
+}
+
+.pdf-modal-content hr {
+    background: #30343e;
+}
+
+#pdfQuestionInstructions {
+    color: #c0badf;
+    background: #24213a;
+    border-color: #403a68;
+}

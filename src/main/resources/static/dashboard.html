@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GuardianIQ-Your AI Assistant Guardian| Dashboard</title>
+
+    <meta
+        name="description"
+        content="Your personal AI assistant for asking questions, learning, and exploring topics."
+    >
+
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+
+        <!-- ================= SIDEBAR ================= -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="sidebar-header">
+                <a
+                    class="brand"
+                    href="/dashboard.html"
+                    aria-label="AI Assistant home"
+                >
+                    <span class="brand-icon" aria-hidden="true">✦</span>
+                    <span class="brand-text">AI Assistant</span>
+                </a>
+            </div>
+
+            <!-- New conversation -->
+            <div class="sidebar-actions">
+                <button
+                    type="button"
+                    class="new-conversation-button"
+                    id="newConversationButton"
+                    data-new-conversation
+                >
+                    <span class="button-icon" aria-hidden="true">＋</span>
+                    <span>New conversation</span>
+                </button>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="sidebar-navigation" aria-label="Main navigation">
+
+                <p class="sidebar-section-title">WORKSPACE</p>
+
+                <a
+                    class="sidebar-nav-item active"
+                    href="/dashboard.html"
+                    aria-current="page"
+                >
+                    <span class="nav-icon" aria-hidden="true">💬</span>
+                    <span>AI Chat</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="sidebar-nav-item"
+                    id="pdfQuestionsButton"
+                    title="Upload a PDF and ask questions"
+                >
+                    <span class="nav-icon" aria-hidden="true">📄</span>
+                    <span>PDF Questions</span>
+                </button>
+
+            </nav>
+
+            <!-- Saved conversations -->
+            <section
+                class="conversation-history-section"
+                aria-label="Conversation history"
+            >
+                <h2 class="conversation-history-heading">
+                    RECENT CHATS
+                </h2>
+
+                <div
+                    id="conversationHistory"
+                    class="conversation-history"
+                    aria-label="Saved conversations"
+                >
+                    <p class="conversation-history-empty">
+                        Loading conversations...
+                    </p>
+                </div>
+            </section>
+
+            <!-- Sidebar bottom -->
+            <div class="sidebar-bottom">
+
+                <div class="sidebar-help">
+                    <span class="help-icon" aria-hidden="true">ⓘ</span>
+
+                    <div>
+                        <p class="help-title">Your learning space</p>
+                        <p class="help-description">
+                            Ask questions and explore new ideas.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sidebar-divider"></div>
+
+                <!-- User profile -->
+                <div class="profile-card">
+
+                    <div
+                        class="profile-avatar"
+                        id="profileInitials"
+                        aria-label="User initials"
+                    >
+                        U
+                    </div>
+
+                    <div class="profile-details">
+                        <p class="profile-name" id="profileName">
+                            Loading profile...
+                        </p>
+
+                        <p class="profile-email" id="profileEmail">
+                            Please wait
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="logout-button"
+                        id="logoutButton"
+                        aria-label="Log out"
+                        title="Log out"
+                    >
+                        <span aria-hidden="true">↪</span>
+                    </button>
+
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- ================= MAIN CONTENT ================= -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="dashboard-header">
+
+                <div class="header-title-area">
+                    <h1>AI Chat</h1>
+
+                    <p class="header-subtitle">
+                        Your personal space to learn and explore.
+                    </p>
+                </div>
+
+                <div class="header-status">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    <span>GuardianIQ-Your AI Assistant Guardian</span>
+                </div>
+
+            </header>
+
+            <!-- ================= CHAT WORKSPACE ================= -->
+            <section
+                class="chat-workspace"
+                aria-label="AI conversation"
+            >
+
+                <!-- Welcome screen -->
+                <div class="welcome-screen" id="welcomeScreen">
+
+                    <div class="welcome-icon" aria-hidden="true">
+                        ✦
+                    </div>
+
+                    <h2>What would you like to explore?</h2>
+
+                    <p class="welcome-description">
+                        Ask a question, learn something new, or get help
+                        understanding a topic. Let's get started.
+                    </p>
+
+                    <!-- Suggested prompts -->
+                    <div class="suggestions-grid">
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Explain object-oriented programming in Java with simple examples."
+                        >
+                            <span
+                                class="suggestion-icon"
+                                aria-hidden="true"
+                            >
+                                💻
+                            </span>
+
+                            <span class="suggestion-content">
+                                <strong>Learn programming or Math</strong>
+                                <span>
+                                    Understand concepts with simple examples.
+                                </span>
+                            </span>
+
+                            <span
+                                class="suggestion-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Explain artificial intelligence and machine learning in simple terms, with real-world examples."
+                        >
+                            <span
+                                class="suggestion-icon"
+                                aria-hidden="true"
+                            >
+                                🧠
+                            </span>
+
+                            <span class="suggestion-content">
+                                <strong>Explore Your School and Collge Subjects or AI and ML</strong>
+                                <span>
+                                    Discover the Process of Learning.
+                                </span>
+                            </span>
+
+                            <span
+                                class="suggestion-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Help me create a practical study plan for learning data structures and algorithms."
+                        >
+                            <span
+                                class="suggestion-icon"
+                                aria-hidden="true"
+                            >
+                                📚
+                            </span>
+
+                            <span class="suggestion-content">
+                                <strong>Plan my learning</strong>
+                                <span>
+                                    Organize your study goals and practice.
+                                </span>
+                            </span>
+
+                            <span
+                                class="suggestion-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Give me an interesting science or technology fact and explain why it matters."
+                        >
+                            <span
+                                class="suggestion-icon"
+                                aria-hidden="true"
+                            >
+                                💡
+                            </span>
+
+                            <span class="suggestion-content">
+                                <strong>Discover something new</strong>
+                                <span>
+                                    Explore interesting facts and ideas.
+                                </span>
+                            </span>
+
+                            <span
+                                class="suggestion-arrow"
+                                aria-hidden="true"
+                            >
+                                →
+                            </span>
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Messages are inserted here by dashboard.js -->
+                <div
+                    class="messages-area"
+                    id="messagesContainer"
+                    aria-live="polite"
+                    aria-label="Conversation messages"
+                    role="log"
+                ></div>
+
+            </section>
+
+            <!-- ================= MESSAGE COMPOSER ================= -->
+            <footer class="chat-composer-area">
+
+                <form class="chat-form" id="chatForm">
+
+                    <label
+                        class="visually-hidden"
+                        for="messageInput"
+                    >
+                        Your message
+                    </label>
+
+                    <textarea
+                        id="messageInput"
+                        name="message"
+                        rows="1"
+                        maxlength="5000"
+                        placeholder="Ask me anything..."
+                        aria-label="Your message"
+                        required
+                    ></textarea>
+
+                    <button
+                        type="submit"
+                        class="send-button"
+                        id="sendButton"
+                        aria-label="Send message"
+                        title="Send message"
+                    >
+                        <span>Send</span>
+                        <span aria-hidden="true">➤</span>
+                    </button>
+
+                </form>
+
+                <p class="composer-disclaimer">
+                    AI responses may contain mistakes. Verify important information.
+                </p>
+
+            </footer>
+
+        </main>
+    </div>
+        <!-- PDF Questions Modal -->
+    <div id="pdfQuestionsModal" class="pdf-modal" hidden>
+        <div class="pdf-modal-content" role="dialog"
+            aria-modal="true" aria-labelledby="pdfModalTitle">
+
+            <div class="pdf-modal-header">
+                <h2 id="pdfModalTitle">📄 Ask Questions from a PDF</h2>
+                <button type="button" id="closePdfModal"
+                        aria-label="Close PDF window">✕</button>
+            </div>
+
+            <p>Upload a PDF document to ask questions about its contents.</p>
+
+            <form id="pdfUploadForm">
+                <label for="pdfFile">Choose a PDF file</label>
+                <input
+                    type="file"
+                    id="pdfFile"
+                    name="file"
+                    accept=".pdf,application/pdf"
+                    required
+                >
+
+                <button type="submit" id="uploadPdfButton">
+                    Upload PDF
+                </button>
+            </form>
+
+            <p id="pdfUploadStatus" role="status" aria-live="polite"></p>
+
+            <hr>
+
+            <p id="pdfQuestionInstructions">
+                After uploading your PDF, you will be able to ask questions
+                about its contents.
+            </p>
+        </div>
+    </div>
+
+    <!-- Load JavaScript after the page markup -->
+    <script src="/js/dashboard.js" defer></script>
+</body>
+</html>
