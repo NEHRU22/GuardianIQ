@@ -15,7 +15,7 @@
 
 GuardianIQ is a web-based AI personal assistant built with **Java and Spring Boot**. Users can ask questions in a conversational interface and upload PDF documents to ask questions about their contents. Its document-question-answering flow uses **Retrieval-Augmented Generation (RAG)**, with Pinecone providing vector search so responses can be grounded in relevant document passages. The application also includes account authentication, conversation history, and scheduled daily email summaries for a registered parent or guardian.
 
-> **Project status:** Academic/prototype project. External services and email reporting require valid credentials and configuration before they can run locally. Review privacy, consent, and child-safety requirements before deploying this application for real users.
+
 
 ## Contents
 
